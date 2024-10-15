@@ -15,15 +15,16 @@ namespace GoofCards.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
-            gun.ammo = 20;
-            gun.damage = 0.4f;
-            gun.attackSpeed = 0.5f;
             gun.spread = 0;
-            gun.bursts = 3;
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
             //Edits values on player when card is selected
+            gun.damage *= 0.4f;
+            gun.attackSpeed *= 0.5f;
+            gunAmmo.maxAmmo += 20;
+            gun.bursts += 3;
+
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
